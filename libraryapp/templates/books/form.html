@@ -1,3 +1,4 @@
+{% extends 'shared/base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -8,6 +9,10 @@
 </head>
 
 <body>
+
+
+  {% block content %}
+
     <h1>Inventory Book</h1>
 
     {% if book.id is not None %}
@@ -48,8 +53,8 @@
         {% else %}
             <input type="submit" value="Create" />
         {% endif %}
-
     </form>
+  {% endblock %}
 </body>
 
 </html>

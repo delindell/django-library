@@ -1,3 +1,4 @@
+{% extends 'shared/base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -6,20 +7,24 @@
     <title>Bangazon</title>
   </head>
   <body>
-    <h1>Library Addition</h1>
+
+    {% block content %}
+      <h1>Library Addition</h1>
 
 
-    <form action="{% url 'libraryapp:libraries' %}" method="post">
-      {% csrf_token %}
-      <fieldset>
-          <label for="title">Title: </label>
-          <input id="title" type="text" name="title">
-      </fieldset>
-      <fieldset>
-          <label for="address">Address: </label>
-          <input id="address" type="text" name="address">
-      </fieldset>
-      <input type="submit" value="Add It" />
-    </form>
+      <form action="{% url 'libraryapp:libraries' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <label for="title">Title: </label>
+            <input id="title" type="text" name="title">
+        </fieldset>
+        <fieldset>
+            <label for="address">Address: </label>
+            <input id="address" type="text" name="address">
+        </fieldset>
+        <input type="submit" value="Add It" />
+      </form>
+    {% endblock %}
+
   </body>
 </html>

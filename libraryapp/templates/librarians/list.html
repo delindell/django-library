@@ -1,3 +1,4 @@
+{% extends 'shared/base.html' %}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -6,12 +7,14 @@
     <title>Library</title>
   </head>
   <body>
-    <h1>Librarians</h1>
+    {% block content %}
+      <h1>Librarians</h1>
 
-    <ol>
-    {% for librarian in all_librarians %}
-        <li><a href="{% url 'libraryapp:librarians' librarian.id %}">{{ librarian.first_name }} {{ librarian.last_name }}</a></li>
-    {% endfor %}
-    </ol>
+      <ol>
+      {% for librarian in all_librarians %}
+          <li><a href="{% url 'libraryapp:librarians' librarian.id %}">{{ librarian.first_name }} {{ librarian.last_name }}</a></li>
+      {% endfor %}
+      </ol>
+    {% endblock %}
   </body>
 </html>
