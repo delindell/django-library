@@ -9,7 +9,7 @@
   <body>
     {% block content %}
       <h1>Libraries</h1>
-
+      <h3><a href="{% url 'libraryapp:library_form' %}">Add a New Library</a></h3>
       <ol>
       {% for library in all_libraries %}
           <li><a href="{% url 'libraryapp:libraries' library.id %}">{{ library.title }}</a> {{ library.address }}</li>
