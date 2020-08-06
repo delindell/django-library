@@ -1,4 +1,6 @@
 from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
 from .views import *
 
 app_name = "libraryapp"
@@ -16,4 +18,4 @@ urlpatterns = [
     path('libraries/<int:library_id>/', library_details, name='libraries'),
     path('books/<int:book_id>/form/', book_edit_form, name='book_edit_form'),
     path('logout/', logout_user, name='logout'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

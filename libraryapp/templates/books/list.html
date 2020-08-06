@@ -1,25 +1,33 @@
 {% extends 'shared/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Library</title>
-  </head>
-  <body>
-  {% block content %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'styles/books.css' %}" />
+{% endblock %}
+
+{% block content %}
     <h1>Books</h1>
 
-    <h3><a href="{% url 'libraryapp:book_form' %}">Add Book to Inventory</a></h3>
+    <dialog class="infoDialog">
+      <div class="infoDialog__message"></div>
+      <button class="closeDialog">Close</button>
+    </dialog>
 
-    <ol>
+    <a href="{% url 'libraryapp:book_form' %}">Add Book to Inventory</a>
+
+    <ol class="books">
     {% for book in all_books %}
-      <li>
-        <a href="{% url 'libraryapp:books' book.id %}"> {{ book.title }} </a>
-        by {{book.author}} published in {{book.year_published}}
-      </li>
+        <li class="book">
+            <a class="book__title" href="{% url 'libraryapp:books' book.id %}"> {{ book.title }}</a>
+            <div class="book__description">
+                by {{book.author}} published in {{book.year_published}}
+            </div>
+            <button id="detail--{{ book.id }}">Details</button>
+        </li>
     {% endfor %}
     </ol>
-  {% endblock %}
-  </body>
-</html>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'scripts/books.js' %}"></script>
+{% endblock %}
