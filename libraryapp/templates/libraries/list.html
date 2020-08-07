@@ -4,8 +4,14 @@
       <h3><a href="{% url 'libraryapp:library_form' %}">Add a New Library</a></h3>
       <ol>
       {% for library in all_libraries %}
-          <li><a href="{% url 'libraryapp:libraries' library.id %}">{{ library.title }}</a> {{ library.address }}</li>
-      {% endfor %}
+          <li><a href="{% url 'libraryapp:libraries' library.id %}">{{ library.title }}</a> 
+          {{ library.address }}
+            <ul>
+              {% for book in library.books %}
+                  <li>{{ book.title }}</li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
       </ol>
     {% endblock %}
-

@@ -18,4 +18,5 @@ urlpatterns = [
     path('libraries/<int:library_id>/', library_details, name='libraries'),
     path('books/<int:book_id>/form/', book_edit_form, name='book_edit_form'),
     path('logout/', logout_user, name='logout'),
+    path('register/', register_user, name="register"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
