@@ -9,3 +9,4 @@ db.sqlite3-journal
 libraryapp/views/connection.py
 libraryenv/
 library.connection.sql
+library.session.sql
